@@ -1,0 +1,59 @@
+# Query Contract
+
+This Solidity smart contract, named "Query", provides functions for validating data inputs. It includes three functions: `validity1`, `validity2`, and `validity3`, each with different validation approaches.
+
+## License
+
+This contract is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+```
+// SPDX-License-Identifier: MIT
+```
+
+## Prerequisites
+
+To compile and interact with this contract, you need a Solidity compiler of version 0.8.9 or higher.
+
+## Contract Details
+
+### Function: `validity1`
+
+```solidity
+function validity1(uint data) public pure returns (uint256) {
+    require(data > 8 && data < 200, "Please enter the correct data");
+    return uint256(data);
+}
+```
+
+The `validity1` function checks if the provided `data` parameter is within a specific range. It uses the `require` statement to validate the condition. 
+If the condition is not met, i.e., `data` is not greater than 8 and less than 200, the function reverts the transaction with an error message. Otherwise, it returns the `data` value.
+
+### Function: `validity2`
+
+```solidity
+function validity2(uint data) public pure returns (uint256) {
+    assert(data > 8 && data < 200);
+    return uint256(data);
+}
+```
+
+The `validity2` function also checks if the `data` parameter is within a specific range. However, it uses the `assert` statement for validation. 
+If the condition evaluates to false, indicating a critical bug in the contract's code, the transaction is reverted. If the condition is true, the function returns the `data` value.
+
+### Function: `validity3`
+
+```solidity
+function validity3(uint data) public pure returns (uint256) {
+    if (data > 8 && data < 200) {
+        revert("Enter the correct data");
+    }
+    return uint256(data);
+}
+```
+
+The `validity3` function follows a conditional validation approach. It checks if the `data` parameter satisfies a specific condition. 
+If the condition is true, the function explicitly reverts the transaction with a custom error message. Otherwise, it returns the `data` value.
+
+---
+
+Feel free to modify and use this contract according to your needs.
