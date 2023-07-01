@@ -1,0 +1,26 @@
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.8.9;
+
+contract Query{
+    function validity1(uint data) public pure returns(uint256)
+    {
+        require(data > 8 && data<200,"Please enter the correct data");
+        return uint256(data);
+    }
+
+    function validity2(uint data) public pure  returns(uint256)
+    {
+        assert(data > 8 && data<200);
+        return uint256(data);
+    }
+
+    function validity3(uint data) public pure returns(uint256)
+    {
+        if(data > 8 && data<200){
+            revert("enter the correct data");
+        }
+        return uint256(data);
+    }
+
+
+}
